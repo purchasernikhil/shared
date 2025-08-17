@@ -1,12 +1,13 @@
-def call(Map configMap){
+def call(Map configMap) {
     def component = configMap.get("component")
-    echo component is "$component"
+    echo "component is $component"
+
     pipeline {
-        agent {node { label 'AGENT-1'}}
+        agent any
         stages {
-            stage ('print') {
-                script{
-                    echo "  "
+            stage('print') {
+                steps {
+                    echo "Hello from $component"
                 }
             }
         }
