@@ -1,23 +1,26 @@
-def decidePipeline(Map configMap){
-    application = configMap.get("application")
+def decidePipeline(Map configMap) {
+    def application = configMap.get("application")
+
     switch(application) {
         case 'nodeJSVM':
-            echo "application is nodeJS and vm based"
+            echo "application is nodeJS and VM based"
             nodeJSVMCI(configMap)
             break
-        case 'nodeJSEKS'
+
+        case 'nodeJSEKS':   
             echo "application is nodeJS and EKS"
             nodeJSEKS(configMap)
             break
-        case 'JavaVM'
-            JavaVMCI(configMap)
-            break 
-        case 'JavaEKS'
-            JavaEKS(configMap)
-            break 
-        default:
-            error "unrecognised application"
-            break 
 
+        case 'JavaVM':
+            JavaVMCI(configMap)
+            break
+
+        case 'JavaEKS':
+            JavaEKS(configMap)
+            break
+
+        default:
+            error "Unrecognised application: ${application}"
     }
 }
