@@ -13,10 +13,12 @@ def decidePipeline(Map configMap) {
             break
 
         case 'JavaVM':
+            echo "application is Java  and VM"
             JavaVMCI(configMap)
             break
 
         case 'JavaEKS':
+            echo "application is Java and EKS"
             JavaEKS(configMap)
             break
 
